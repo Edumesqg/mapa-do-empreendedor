@@ -41,6 +41,18 @@ export default function SwotInicialPage() {
 
         const swot = generateMockSwot(completeData);
         setSwotData(swot);
+
+        localStorage.setItem(
+          'swotInicial',
+          JSON.stringify({
+            empresaNome: completeData.empresaNome,
+            setor: getSetorLabel(completeData.setor),
+            forcas: swot.strengths,
+            fraquezas: swot.weaknesses,
+            oportunidades: swot.opportunities,
+            ameacas: swot.threats,
+          })
+        );
       } catch (error) {
         console.error('Error loading form data:', error);
       }

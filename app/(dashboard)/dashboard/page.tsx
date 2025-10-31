@@ -19,12 +19,35 @@ export default function DashboardPage() {
   const [completedAgents, setCompletedAgents] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [lunaChatOpen, setLunaChatOpen] = useState(false);
+  const [swotData, setSwotData] = useState<any>(null);
+  const [userName, setUserName] = useState('Eduardo');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hasDiagnostic = localStorage.getItem('formCompleto');
       const hasPaid = localStorage.getItem('hasPaid') === 'true';
       const typebotProgress = localStorage.getItem('typebotProgress');
+
+      const swotDataStr = localStorage.getItem('swotInicial');
+      if (swotDataStr) {
+        try {
+          const swot = JSON.parse(swotDataStr);
+          setSwotData(swot);
+        } catch (e) {
+          console.error('Error parsing SWOT data:', e);
+        }
+      }
+
+      if (hasDiagnostic) {
+        try {
+          const formData = JSON.parse(hasDiagnostic);
+          if (formData.empresaNome) {
+            setUserName(formData.empresaNome);
+          }
+        } catch (e) {
+          console.error('Error parsing form data:', e);
+        }
+      }
 
       if (hasDiagnostic && hasPaid) {
         setDiagnosticStatus('processing');
@@ -55,7 +78,7 @@ export default function DashboardPage() {
     <div className="space-y-12">
       <section className="animate-fade-in">
         <h1 className="mb-2 text-3xl font-bold text-navy-blue md:text-4xl">
-          Olá, Eduardo! 👋
+          Olá, {userName}! 👋
         </h1>
         <p className="text-lg text-gray-600 md:text-xl">
           Bem-vindo ao seu painel de controle estratégico
@@ -149,9 +172,13 @@ export default function DashboardPage() {
 
         <DiagnosticCard
           status={diagnosticStatus}
-          empresaNome="Padaria do João"
-          setor="Alimentação"
-          criadoEm="28 de outubro, 2025"
+          empresaNome={swotData?.empresaNome || 'Seu Negócio'}
+          setor={swotData?.setor || 'N/A'}
+          criadoEm={new Date().toLocaleDateString('pt-BR', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}
           currentStep={currentStep}
         />
       </section>
