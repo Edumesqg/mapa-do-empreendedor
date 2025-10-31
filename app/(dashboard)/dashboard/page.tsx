@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { TypebotChat } from '@/components/dashboard/TypebotChat';
+import { LunaChatSheet } from '@/components/chat/LunaChatSheet';
 import { AgentProgress } from '@/components/dashboard/AgentProgress';
 import { StatusCard } from '@/components/dashboard/StatusCard';
 import { DiagnosticCard } from '@/components/dashboard/DiagnosticCard';
-import { BarChart3, FileText, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { BarChart3, FileText, Clock, Bot, MessageCircle } from 'lucide-react';
 
 type DiagnosticStatus = 'none' | 'processing' | 'completed';
 type CurrentAgent = 'luna' | 'jack' | 'nina' | null;
@@ -16,6 +18,7 @@ export default function DashboardPage() {
   const [currentAgent, setCurrentAgent] = useState<CurrentAgent>(null);
   const [completedAgents, setCompletedAgents] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
+  const [lunaChatOpen, setLunaChatOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -96,14 +99,38 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
-            <TypebotChat
-              onStateChange={(state) => {
-                if (state === 'active' && !currentAgent) {
-                  setCurrentAgent('luna');
-                  setCurrentStep(1);
-                }
-              }}
-            />
+            <Card className="overflow-hidden border-2 border-purple-200 shadow-lg transition-shadow hover:shadow-xl">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
+                    <Bot className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Luna - SWOT Specialist</CardTitle>
+                    <p className="text-sm text-gray-600">Validação e refinamento</p>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4 text-sm text-gray-700">
+                  Luna irá revisar sua análise SWOT, fazer perguntas estratégicas e
+                  aprofundar cada quadrante para garantir máxima precisão.
+                </p>
+                <Button
+                  onClick={() => {
+                    setLunaChatOpen(true);
+                    if (!currentAgent) {
+                      setCurrentAgent('luna');
+                      setCurrentStep(1);
+                    }
+                  }}
+                  className="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Conversar Agora
+                </Button>
+              </CardContent>
+            </Card>
           </div>
 
           <div>
@@ -128,6 +155,8 @@ export default function DashboardPage() {
           currentStep={currentStep}
         />
       </section>
+
+      <LunaChatSheet open={lunaChatOpen} onOpenChange={setLunaChatOpen} />
     </div>
   );
 }
