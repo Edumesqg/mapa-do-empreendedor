@@ -7,13 +7,14 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
           <div className="flex flex-col space-y-4">
             <h3 className="text-xl font-bold text-white">
-              Mapa do Empreendedor
+              Diagnóstico Estratégico Automatizado
             </h3>
             <p className="text-sm text-gray-400">
-              Consultoria estratégica automatizada
+              ADVISION CONSULTING
             </p>
             <p className="mt-6 text-sm text-gray-500">
-              &copy; 2025 Mapa do Empreendedor. Todos os direitos reservados.
+              &copy; 2025 ADVISION CONSULTING - Protótipo Interno<br />
+              Desenvolvido por Eduardo Mesquita
             </p>
           </div>
 

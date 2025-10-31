@@ -20,14 +20,12 @@ import {
   SwotData,
   SwotItem,
 } from '@/lib/swot-generator';
-import { PaywallModal } from '@/components/paywall/PaywallModal';
 
 export default function SwotInicialPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [swotData, setSwotData] = useState<SwotData | null>(null);
   const [formData, setFormData] = useState<any>(null);
-  const [showPaywall, setShowPaywall] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -61,39 +59,9 @@ export default function SwotInicialPage() {
     }, 2500);
   }, []);
 
-  useEffect(() => {
-    const hasPaid = localStorage.getItem('hasPaid') === 'true';
-
-    if (!hasPaid && !isLoading) {
-      const timer = setTimeout(() => {
-        setShowPaywall(true);
-      }, 10000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isLoading]);
 
   const handleUpgradeClick = () => {
-    setShowPaywall(true);
-  };
-
-  const handleClosePaywall = () => {
-    setShowPaywall(false);
-    localStorage.setItem('paywallShown', 'true');
-  };
-
-  const handleProceedToPayment = () => {
-    console.log('Redirecting to Stripe Checkout...');
-
-    localStorage.setItem('paymentIntent', 'initiated');
-
-    alert('Stripe Checkout sera integrado aqui. Por enquanto, simulando pagamento...');
-
-    setTimeout(() => {
-      localStorage.setItem('hasPaid', 'true');
-      setShowPaywall(false);
-      router.push('/dashboard');
-    }, 2000);
+    router.push('/dashboard');
   };
 
   if (isLoading) {
@@ -135,7 +103,7 @@ export default function SwotInicialPage() {
       <header className="border-b border-gray-200 bg-white px-6 py-6 md:px-8">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between">
           <h1 className="text-xl font-semibold text-navy-blue">
-            Mapa do Empreendedor
+            Diagnóstico Estratégico Automatizado
           </h1>
 
           <button
@@ -226,8 +194,7 @@ export default function SwotInicialPage() {
           </h2>
 
           <p className="mx-auto mb-10 max-w-[700px] text-base text-gray-600 md:text-lg">
-            Por <span className="font-bold text-emerald-green">R$ 50</span>,
-            nossa IA avançada e agentes especialistas avaliam sua SWOT e montam
+            Nossa IA avançada e agentes especialistas avaliam sua SWOT e montam
             um plano completo com TOWS, OKRs e Roadmap de Ações.
           </p>
 
@@ -254,11 +221,11 @@ export default function SwotInicialPage() {
             onClick={handleUpgradeClick}
             className="mb-4 h-auto w-full bg-gradient-to-r from-emerald-green to-[#059669] px-12 py-5 text-lg font-bold text-white shadow-lg shadow-emerald-green/30 transition-all hover:translate-y-[-2px] hover:shadow-xl active:scale-[0.98] md:w-auto md:text-xl"
           >
-            Quero meu Plano Estratégico Completo →
+            Acessar Análise Completa →
           </Button>
 
           <p className="mb-2 text-base font-semibold text-gray-700">
-            💰 R$ 50 • ⏱️ Entrega em ~45 minutos
+            ⏱️ Entrega em ~45 minutos
           </p>
 
           <p className="text-sm text-gray-500">
@@ -267,11 +234,6 @@ export default function SwotInicialPage() {
         </div>
       </section>
 
-      <PaywallModal
-        isOpen={showPaywall}
-        onClose={handleClosePaywall}
-        onProceedToPayment={handleProceedToPayment}
-      />
     </div>
   );
 }

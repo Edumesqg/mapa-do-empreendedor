@@ -114,7 +114,7 @@ export default function PoliticaDePrivacidadePage() {
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600 leading-relaxed space-y-3">
                     <p>
-                      A Mapa do Empreendedor respeita sua privacidade e está comprometida em proteger seus
+                      A Diagnóstico Estratégico Automatizado respeita sua privacidade e está comprometida em proteger seus
                       dados pessoais em conformidade com a LGPD (Lei nº 13.709/2018).
                     </p>
                     <p className="font-medium text-slate-900">Responsável: Eduardo Mesquita</p>
@@ -315,7 +315,7 @@ export default function PoliticaDePrivacidadePage() {
                   <div className="flex gap-3">
                     <Info className="h-5 w-5 text-royal-blue flex-shrink-0 mt-0.5" />
                     <p className="text-slate-600 leading-relaxed">
-                      A Mapa do Empreendedor respeita sua privacidade e está comprometida em proteger seus
+                      A Diagnóstico Estratégico Automatizado respeita sua privacidade e está comprometida em proteger seus
                       dados pessoais em conformidade com a LGPD (Lei nº 13.709/2018).
                     </p>
                   </div>

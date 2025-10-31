@@ -12,10 +12,10 @@ export default function Home() {
           <div className="mx-auto max-w-[1200px] animate-fade-in">
             <div className="flex flex-col items-center text-center">
               <h1 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                MAPA DO EMPREENDEDOR
+                DIAGNÓSTICO ESTRATÉGICO AUTOMATIZADO
               </h1>
               <p className="mb-12 text-base text-gray-300 md:text-lg">
-                Consultoria estratégica automatizada por IA
+                ADVISION CONSULTING
               </p>
 
               <h2 className="mb-6 max-w-[800px] text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-5xl lg:leading-tight">
@@ -23,7 +23,7 @@ export default function Home() {
               </h2>
 
               <p className="mb-10 max-w-[700px] text-lg leading-relaxed text-gray-100 md:text-xl md:leading-relaxed">
-                Obtenha SWOT, pesquisa de mercado e um plano de ação completo em minutos — por apenas R$ 50.
+                Obtenha SWOT, pesquisa de mercado e um plano de ação completo em minutos.
               </p>
 
               <Link href="/cadastro">
@@ -31,7 +31,7 @@ export default function Home() {
                   size="lg"
                   className="h-auto bg-emerald-green px-12 py-5 text-lg font-semibold text-white shadow-lg shadow-emerald-green/40 transition-all duration-200 hover:translate-y-[-2px] hover:bg-emerald-green hover:shadow-xl hover:shadow-emerald-green/50 active:scale-[0.98] md:text-xl"
                 >
-                  Começar diagnóstico gratuito
+                  Testar Diagnóstico
                 </Button>
               </Link>
 
@@ -45,7 +45,7 @@ export default function Home() {
         <section className="bg-white px-6 py-20 md:px-8 lg:px-12">
           <div className="mx-auto max-w-[1200px]">
             <h2 className="mb-14 text-center text-3xl font-semibold text-navy-blue md:text-4xl">
-              Por que escolher o Mapa do Empreendedor?
+              Por que escolher o Diagnóstico Estratégico Automatizado?
             </h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -153,7 +153,7 @@ export default function Home() {
                     </h3>
                   </div>
                   <p className="text-base leading-relaxed text-gray-600">
-                    Amplie sua visão estratégica com pesquisa de mercado externa, matriz TOWS para definir ações prioritárias, OKRs mensuráveis e um roadmap de execução prático. Nossa abordagem combina frameworks consagrados de Harvard Business School, McKinsey e BCG, adaptados para pequenas empresas. Por apenas R$ 50 (equivalente a 1% do custo de uma consultoria tradicional).
+                    Amplie sua visão estratégica com pesquisa de mercado externa, matriz TOWS para definir ações prioritárias, OKRs mensuráveis e um roadmap de execução prático. Nossa abordagem combina frameworks consagrados de Harvard Business School, McKinsey e BCG, adaptados para pequenas empresas.
                   </p>
                 </div>
               </div>

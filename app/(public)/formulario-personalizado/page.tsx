@@ -231,7 +231,7 @@ export default function FormularioPersonalizadoPage() {
           </button>
 
           <h1 className="text-lg font-semibold text-navy-blue">
-            Mapa do Empreendedor
+            Diagnóstico Estratégico Automatizado
           </h1>
 
           <button

@@ -107,7 +107,7 @@ export default function TermosDeUsoPage() {
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600 leading-relaxed">
                     <p>
-                      Ao acessar e utilizar a plataforma Mapa do Empreendedor (&quot;Plataforma&quot;, &quot;Serviço&quot;),
+                      Ao acessar e utilizar a plataforma Diagnóstico Estratégico Automatizado (&quot;Plataforma&quot;, &quot;Serviço&quot;),
                       você (&quot;Usuário&quot;, &quot;Você&quot;) concorda em cumprir e estar vinculado a estes Termos de Uso.
                       Se você não concorda com qualquer parte destes termos, não deve utilizar nossos serviços.
                     </p>
@@ -122,7 +122,7 @@ export default function TermosDeUsoPage() {
                     <div>
                       <h4 className="font-medium text-slate-900 mb-2">2.1 Descrição</h4>
                       <p>
-                        O Mapa do Empreendedor é uma plataforma SaaS que oferece consultoria estratégica
+                        O Diagnóstico Estratégico Automatizado é uma plataforma SaaS que oferece consultoria estratégica
                         automatizada por inteligência artificial, fornecendo diagnósticos empresariais,
                         análises SWOT, pesquisas de mercado e planos de ação personalizados.
                       </p>
@@ -197,7 +197,7 @@ export default function TermosDeUsoPage() {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-slate-900 mb-2">5.2 Plano Pago (R$ 50,00)</h4>
+                      <h4 className="font-medium text-slate-900 mb-2">5.2 Plano Completo</h4>
                       <ul className="list-disc list-inside space-y-2">
                         <li>Diagnóstico completo com 3 agentes de IA</li>
                         <li>3 relatórios profissionais em PDF</li>
@@ -231,7 +231,7 @@ export default function TermosDeUsoPage() {
                       <h4 className="font-medium text-slate-900 mb-2">6.1 Propriedade da Plataforma</h4>
                       <p>
                         Todo conteúdo, design, código e metodologias são propriedade exclusiva do
-                        Mapa do Empreendedor.
+                        Diagnóstico Estratégico Automatizado.
                       </p>
                     </div>
                     <div>
@@ -331,7 +331,7 @@ export default function TermosDeUsoPage() {
                     12. Contato
                   </AccordionTrigger>
                   <AccordionContent className="text-slate-600 leading-relaxed">
-                    <p className="font-medium text-slate-900 mb-2">Mapa do Empreendedor</p>
+                    <p className="font-medium text-slate-900 mb-2">Diagnóstico Estratégico Automatizado</p>
                     <p>Email: contato@mapadoempreendedor.com.br</p>
                     <p>DPO: dpo@mapadoempreendedor.com.br</p>
                   </AccordionContent>
@@ -345,7 +345,7 @@ export default function TermosDeUsoPage() {
                   1. Aceitação dos Termos
                 </h2>
                 <p className="text-slate-600 leading-relaxed">
-                  Ao acessar e utilizar a plataforma Mapa do Empreendedor (&quot;Plataforma&quot;, &quot;Serviço&quot;),
+                  Ao acessar e utilizar a plataforma Diagnóstico Estratégico Automatizado (&quot;Plataforma&quot;, &quot;Serviço&quot;),
                   você (&quot;Usuário&quot;, &quot;Você&quot;) concorda em cumprir e estar vinculado a estes Termos de Uso.
                   Se você não concorda com qualquer parte destes termos, não deve utilizar nossos serviços.
                 </p>
@@ -359,7 +359,7 @@ export default function TermosDeUsoPage() {
                   <div>
                     <h3 className="text-lg font-medium text-slate-900 mb-2">2.1 Descrição</h3>
                     <p className="text-slate-600 leading-relaxed">
-                      O Mapa do Empreendedor é uma plataforma SaaS que oferece consultoria estratégica
+                      O Diagnóstico Estratégico Automatizado é uma plataforma SaaS que oferece consultoria estratégica
                       automatizada por inteligência artificial, fornecendo diagnósticos empresariais,
                       análises SWOT, pesquisas de mercado e planos de ação personalizados.
                     </p>
@@ -436,7 +436,7 @@ export default function TermosDeUsoPage() {
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-slate-900 mb-2">5.2 Plano Pago (R$ 50,00)</h3>
+                    <h3 className="text-lg font-medium text-slate-900 mb-2">5.2 Plano Completo</h3>
                     <ul className="list-disc list-inside space-y-2 text-slate-600">
                       <li>Diagnóstico completo com 3 agentes de IA</li>
                       <li>3 relatórios profissionais em PDF</li>
@@ -477,7 +477,7 @@ export default function TermosDeUsoPage() {
                     </h3>
                     <p className="text-slate-600 leading-relaxed">
                       Todo conteúdo, design, código e metodologias são propriedade exclusiva do
-                      Mapa do Empreendedor.
+                      Diagnóstico Estratégico Automatizado.
                     </p>
                   </div>
                   <div>
@@ -590,7 +590,7 @@ export default function TermosDeUsoPage() {
                   12. Contato
                 </h2>
                 <Card className="p-6 bg-slate-50 border-slate-200">
-                  <p className="font-medium text-slate-900 mb-2">Mapa do Empreendedor</p>
+                  <p className="font-medium text-slate-900 mb-2">Diagnóstico Estratégico Automatizado</p>
                   <p className="text-slate-600">Email: contato@mapadoempreendedor.com.br</p>
                   <p className="text-slate-600">DPO: dpo@mapadoempreendedor.com.br</p>
                 </Card>

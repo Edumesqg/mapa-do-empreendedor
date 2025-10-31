@@ -47,7 +47,7 @@ export default function WelcomePage() {
         </div>
 
         <h1 className="mb-4 text-3xl font-bold leading-tight text-navy-blue md:text-4xl">
-          Bem-vindo ao Mapa do Empreendedor, {userName}!
+          Bem-vindo ao Diagnóstico Estratégico Automatizado, {userName}!
         </h1>
 
         <p className="mx-auto mb-12 max-w-[540px] text-lg leading-relaxed text-gray-600 md:text-xl">
@@ -97,7 +97,7 @@ export default function WelcomePage() {
                   Upgrade para diagnóstico completo (opcional)
                 </h3>
                 <p className="text-base leading-relaxed text-gray-600">
-                  Por R$ 50, tenha acesso a análise aprofundada com IA e plano de ação estratégico.
+                  Tenha acesso a análise aprofundada com IA e plano de ação estratégico.
                 </p>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function WelcomePage() {
           onClick={handleStart}
           className="mb-4 h-auto w-full bg-cta-gradient px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-royal-blue/30 transition-all duration-200 hover:translate-y-[-2px] hover:shadow-xl hover:shadow-royal-blue/40 active:scale-[0.98] md:mx-auto md:max-w-[400px]"
         >
-          Começar meu diagnóstico 🚀
+          Testar Diagnóstico
         </Button>
 
         <button

@@ -12,10 +12,10 @@ export function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
       <div className="hidden w-1/2 flex-col items-center justify-center bg-hero-gradient px-[60px] py-20 lg:flex">
         <div className="flex max-w-md flex-col items-center text-center">
           <h1 className="mb-4 font-inter text-[32px] font-bold leading-[1.2] tracking-[-0.02em] text-white">
-            Mapa do Empreendedor
+            Diagnóstico Estratégico Automatizado
           </h1>
           <p className="mb-12 font-inter text-[18px] font-normal leading-[1.6] text-gray-300">
-            Consultoria estratégica automatizada
+            ADVISION CONSULTING
           </p>
           <BarChart3 className="h-[200px] w-[200px] text-sky-blue opacity-20" />
         </div>

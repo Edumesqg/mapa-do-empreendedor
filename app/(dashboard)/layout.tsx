@@ -61,7 +61,7 @@ export default function DashboardLayout({
               href="/dashboard"
               className="text-xl font-bold text-navy-blue transition-colors hover:text-royal-blue"
             >
-              Mapa do Empreendedor
+              Diagnóstico Estratégico Automatizado
             </Link>
 
             <nav className="hidden items-center gap-8 lg:flex">
@@ -171,13 +171,13 @@ export default function DashboardLayout({
             <div className="mt-auto border-t border-gray-300 pt-6">
               <div className="rounded-xl bg-gradient-to-br from-royal-blue to-sky-blue p-4">
                 <h4 className="mb-1 text-base font-semibold text-white">
-                  Upgrade para Pro
+                  Acesso completo
                 </h4>
                 <p className="mb-3 text-sm text-white/90">
-                  Acesso ilimitado a diagnósticos
+                  Diagnósticos ilimitados
                 </p>
                 <Button className="h-auto w-full rounded-lg bg-white px-4 py-2 text-sm font-semibold text-royal-blue hover:bg-white/90">
-                  Saiba mais →
+                  Continuar →
                 </Button>
               </div>
             </div>
