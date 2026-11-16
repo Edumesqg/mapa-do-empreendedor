@@ -2,52 +2,20 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="bg-carbon">
-      <div className="mx-auto max-w-[1200px] px-6 py-10 md:px-8 md:py-12 lg:px-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-          <div className="flex flex-col space-y-4">
-            <h3 className="text-xl font-bold text-white">
-              Diagnóstico Estratégico Automatizado
-            </h3>
-            <p className="text-sm text-gray-400">
-              ADVISION CONSULTING
-            </p>
-            <p className="mt-6 text-sm text-gray-500">
-              &copy; 2025 ADVISION CONSULTING - Protótipo Interno<br />
-              Desenvolvido por Eduardo Mesquita
-            </p>
-          </div>
-
-          <div className="flex flex-col space-y-4">
-            <h4 className="text-base font-semibold text-white">Links úteis</h4>
-            <nav className="flex flex-col space-y-2">
-              <Link
-                href="#como-funciona"
-                className="text-sm text-gray-300 transition-colors duration-200 hover:text-sky-blue"
-              >
-                Como funciona
-              </Link>
-              <Link
-                href="#metodologia"
-                className="text-sm text-gray-300 transition-colors duration-200 hover:text-sky-blue"
-              >
-                Metodologia
-              </Link>
-              <Link
-                href="#sobre"
-                className="text-sm text-gray-300 transition-colors duration-200 hover:text-sky-blue"
-              >
-                Sobre
-              </Link>
-              <Link
-                href="#contato"
-                className="text-sm text-gray-300 transition-colors duration-200 hover:text-sky-blue"
-              >
-                Contato
-              </Link>
-            </nav>
-          </div>
+    <footer className="border-t border-white/10 bg-[#041b33] text-slate-300">
+      <div className="mx-auto flex max-w-7xl flex-col gap-7 px-5 py-9 sm:px-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-lg font-bold tracking-tight text-white">Autoconsultoria</p>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-slate-400">
+            Um projeto independente e open source de Eduardo Mesquita Gomes. Conhecimento em estratégia mais próximo de quem empreende.
+          </p>
         </div>
+        <nav aria-label="Links do rodapé" className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
+          <Link href="/fundamento" className="transition hover:text-white">Fundamento</Link>
+          <Link href="/diagnostico" className="transition hover:text-white">Diagnóstico</Link>
+          <Link href="/config" className="transition hover:text-white">Sua API</Link>
+          <Link href="/consulta" className="transition hover:text-white">Reunião</Link>
+        </nav>
       </div>
     </footer>
   );

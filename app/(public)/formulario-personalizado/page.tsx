@@ -13,6 +13,8 @@ import { strategicQuestions } from '@/lib/questions/strategic';
 import { clusterQuestions, finalQuestion, clusterNames } from '@/lib/questions/clusters';
 import { formPersonalizadoSchema, FormPersonalizadoData } from '@/lib/validations/formulario-personalizado';
 import { Question } from '@/types/form';
+import { getSetorLabel } from '@/lib/swot-generator';
+import { newId, saveSession } from '@/lib/session';
 import {
   ArrowLeft,
   X,
@@ -53,13 +55,47 @@ export default function FormularioPersonalizadoPage() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [showTransition, setShowTransition] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [checkboxSelections, setCheckboxSelections] = useState<Record<string, string[]>>({
     diferenciacaoCompetitiva: [],
     principaisClientes: [],
   });
 
   const clusterSpecificQuestions = clusterQuestions[cluster] || clusterQuestions.outro;
-  const allQuestions = [...strategicQuestions, ...clusterSpecificQuestions, finalQuestion];
+  const evidenceQuestions: Question[] = [
+    {
+      id: 'quemCompra',
+      number: 0,
+      label: 'Quem compra de fato, e o que essa pessoa compara na hora de escolher?',
+      microcopy: 'Opcional. Sem público e critério, o quadro não inventa cliente.',
+      type: 'textarea',
+      placeholder: 'Ex.: oficinas do bairro comparam prazo, não o menor preço.',
+      rows: 3,
+      validation: { required: false },
+    },
+    {
+      id: 'oQueRepete',
+      number: 0,
+      label: 'O que a operação repete, mesmo sem ter planejado?',
+      microcopy: 'Opcional. Padrão observado, não elogio. Sem efeito, o quadro não inventa força.',
+      type: 'textarea',
+      placeholder: 'Ex.: pedido que entra até as 11h sai no mesmo dia.',
+      rows: 3,
+      validation: { required: false },
+    },
+    {
+      id: 'pressaoExterna',
+      number: 0,
+      label: 'Que fato de fora você já viu mudar preço, volume ou acesso?',
+      microcopy: 'Opcional. Condição observada, não medo. Sem fato, a ameaça não entra.',
+      type: 'textarea',
+      placeholder: 'Ex.: dois concorrentes passaram a entregar no mesmo bairro neste ano.',
+      rows: 3,
+      validation: { required: false },
+    },
+  ];
+  const allQuestions = [...strategicQuestions, ...clusterSpecificQuestions, ...evidenceQuestions, finalQuestion];
   const totalSteps = allQuestions.length;
 
   const {
@@ -115,7 +151,7 @@ export default function FormularioPersonalizadoPage() {
       return selections.length > 0;
     }
 
-    if (currentQuestion.type === 'textarea' && currentQuestion.id === 'observacoesAdicionais') {
+    if (currentQuestion.type === 'textarea' && (currentQuestion.id === 'observacoesAdicionais' || currentQuestion.validation?.required === false)) {
       return true;
     }
 
@@ -154,7 +190,7 @@ export default function FormularioPersonalizadoPage() {
   const handleExit = () => {
     if (confirm('Deseja sair? Seu progresso será salvo.')) {
       saveProgress(formValues);
-      router.push('/dashboard');
+      router.push('/');
     }
   };
 
@@ -170,16 +206,82 @@ export default function FormularioPersonalizadoPage() {
     });
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
+    setSubmitError('');
+    setGenerating(true);
     try {
       const basicData = JSON.parse(localStorage.getItem('formBasico') || '{}');
       const completeData = { ...basicData, ...data, ...checkboxSelections };
-
       localStorage.setItem('formCompleto', JSON.stringify(completeData));
 
-      router.push('/swot-inicial?processing=true');
+      const equipe = completeData.equipe === 'so-eu' ? 'apenas-eu' : completeData.equipe;
+      const receitaMap: Record<string, string> = {
+        '<5k': '<10k',
+        '5k-20k': '10-50k',
+        '20k-50k': '10-50k',
+        '50k-100k': '50-500k',
+        '>100k': '>500k',
+      };
+      const objetivoMap: Record<string, string> = {
+        'aumentar-vendas': 'expandir',
+        'aumentar-lucro': 'eficiencia',
+        equipe: 'expandir',
+      };
+      const financeiro =
+        completeData.situacaoFinanceira === 'lucro-pequeno'
+          ? 'equilibrio'
+          : completeData.situacaoFinanceira;
+
+      const response = await fetch('/api/generate-swot-initial', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...completeData,
+          equipe,
+          receita: receitaMap[completeData.receita] || completeData.receita,
+          situacaoFinanceira: financeiro,
+          objetivoPrincipal: objetivoMap[completeData.objetivoPrincipal] || completeData.objetivoPrincipal,
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Não foi possível montar a SWOT.');
+
+      const toItems = (list: { texto: string }[] | undefined) =>
+        (list || []).map((item) => ({ id: newId(), texto: item.texto }));
+      const forcas = toItems(result.forcas);
+
+      saveSession({
+        answers: {
+          empresaNome: completeData.empresaNome || '',
+          setor: completeData.setor || cluster,
+          experiencia: completeData.experiencia || '',
+          equipe,
+          receita: receitaMap[completeData.receita] || completeData.receita || '',
+          situacaoFinanceira: financeiro || '',
+          objetivoPrincipal: objetivoMap[completeData.objetivoPrincipal] || completeData.objetivoPrincipal || '',
+          maiorDesafio: completeData.maiorDesafio || '',
+          nivelDigitalizacao: completeData.nivelDigitalizacao || '',
+          concorrenciaPercebida: completeData.concorrenciaPercebida || '',
+          diferencial: completeData.observacoesAdicionais || '',
+          quemCompra: completeData.quemCompra || '',
+          oQueRepete: completeData.oQueRepete || '',
+          pressaoExterna: completeData.pressaoExterna || '',
+        },
+        setorLabel: getSetorLabel(completeData.setor || cluster),
+        swot: {
+          forcas,
+          fraquezas: toItems(result.fraquezas),
+          oportunidades: toItems(result.oportunidades),
+          ameacas: toItems(result.ameacas),
+        },
+        lacunas: Array.isArray(result.lacunas) ? result.lacunas : [],
+        updatedAt: new Date().toISOString(),
+      });
+
+      router.push('/swot');
     } catch (error) {
-      console.error('Error submitting form:', error);
+      setGenerating(false);
+      setSubmitError(error instanceof Error ? error.message : 'Erro ao gerar a SWOT.');
     }
   };
 
@@ -198,6 +300,18 @@ export default function FormularioPersonalizadoPage() {
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, [currentStep, isStepValid]);
 
+  if (generating) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-gray to-white px-6">
+        <div className="animate-fade-in text-center">
+          <Target className="mx-auto mb-6 h-16 w-16 animate-pulse text-royal-blue" />
+          <h2 className="mb-2 text-2xl font-bold text-navy-blue">Organizando a SWOT</h2>
+          <p className="text-lg text-gray-600">Só entra o que as respostas sustentam. Quadrante sem fato fica curto.</p>
+        </div>
+      </div>
+    );
+  }
+
   if (showTransition) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#F0F9FF] px-6">
@@ -206,10 +320,10 @@ export default function FormularioPersonalizadoPage() {
             <Target className="h-20 w-20 animate-pulse text-royal-blue" />
           </div>
           <h2 className="mb-4 text-3xl font-bold text-navy-blue md:text-4xl">
-            Ótimo! Agora perguntas específicas sobre {clusterNames[cluster]}
+            Agora, o que a operação de {clusterNames[cluster] || 'este ramo'} faz
           </h2>
           <p className="text-xl text-gray-600">
-            Mais {clusterSpecificQuestions.length + 1} perguntas e terminamos!
+            Canal, custo, prazo ou entrega. No fim, três frases opcionais.
           </p>
         </div>
       </div>
@@ -231,7 +345,7 @@ export default function FormularioPersonalizadoPage() {
           </button>
 
           <h1 className="text-lg font-semibold text-navy-blue">
-            Diagnóstico Estratégico Automatizado
+            Autoconsultoria
           </h1>
 
           <button
@@ -373,9 +487,10 @@ export default function FormularioPersonalizadoPage() {
                     onClick={handleSubmit(onSubmit)}
                     className="h-auto w-full animate-fade-in bg-emerald-green px-12 py-5 text-xl font-semibold text-white shadow-lg shadow-emerald-green/30 transition-all hover:translate-y-[-2px] hover:bg-[#059669] hover:shadow-xl active:scale-[0.98] md:w-auto"
                   >
-                    Gerar minha análise SWOT →
+                    Montar a SWOT com o que foi respondido →
                   </Button>
                 )}
+                {submitError && <p className="text-sm text-coral-red">{submitError}</p>}
               </div>
             </QuestionLayout>
           )}

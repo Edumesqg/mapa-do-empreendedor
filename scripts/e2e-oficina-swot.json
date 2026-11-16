@@ -1,0 +1,48 @@
+{
+  "answers": {
+    "empresaNome": "Oficina do Moacir",
+    "setor": "servicos",
+    "experiencia": "5-10",
+    "equipe": "2-5",
+    "receita": "50-150k",
+    "situacaoFinanceira": "estavel",
+    "objetivoPrincipal": "aumentar-lucro",
+    "maiorDesafio": "retencao",
+    "nivelDigitalizacao": "whatsapp",
+    "concorrenciaPercebida": "alta",
+    "diferencial": "Revisao agendada com prazo cumprido e pecas originais no motor",
+    "quemCompra": "Motoboys e donos de CG que precisam de previsibilidade de entrega",
+    "oQueRepete": "Revisao de 1000 km e troca de oleo com checklist",
+    "pressaoExterna": "Oficinas de rua baixam preco e supermercado vende oleo; cliente compara prazo e garantia"
+  },
+  "swot": {
+    "forcas": [
+      {
+        "texto": "Condição declarada pelo dono: Revisao agendada com prazo cumprido e pecas originais no motor. O efeito no cliente ainda precisa ser confirmado."
+      },
+      {
+        "texto": "Capacidade que a operação declara repetir: Revisao de 1000 km e troca de oleo com checklist."
+      }
+    ],
+    "fraquezas": [
+      {
+        "texto": "Desafio declarado: reter quem já compra. Ainda não há o que interrompe a recompra."
+      }
+    ],
+    "oportunidades": [],
+    "ameacas": [
+      {
+        "texto": "Pressão declarada de fora: Oficinas de rua baixam preco e supermercado vende oleo; cliente compara prazo e garantia. Confirmar a exposição da empresa e o mecanismo de dano."
+      },
+      {
+        "texto": "A concorrência é percebida como alta. Falta quem compara, em quê e quando isso comprime a margem."
+      }
+    ],
+    "lacunas": [
+      "Quem compra foi descrito assim: “Motoboys e donos de CG que precisam de previsibilidade de entrega”. Isso ainda não é oportunidade. Falta a condição externa, o público e o benefício.",
+      "A intenção deste ciclo é melhorar a margem. Intenção não entra como oportunidade. Se a conversa for de crescimento, separar penetração, produto novo, mercado novo e diversificação.",
+      "Tempo de mercado, tamanho da equipe e faturamento são contexto. Eles não viram força nem fraqueza sem um efeito observável.",
+      "Nenhuma oportunidade externa foi sustentada. Desejo, ação pretendida e canal ainda não usado ficam de fora até haver condição, público e benefício."
+    ]
+  }
+}

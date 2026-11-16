@@ -29,7 +29,6 @@ import {
   Sprout,
   Laptop,
   HelpCircle,
-  Lock,
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -128,7 +127,7 @@ export default function FormularioBasicoPage() {
         equipe,
         receita,
       });
-      router.push('/dashboard');
+      router.push('/');
     }
   };
 
@@ -167,7 +166,7 @@ export default function FormularioBasicoPage() {
           </button>
 
           <h1 className="text-lg font-semibold text-navy-blue">
-            Diagnóstico Estratégico Automatizado
+            Autoconsultoria
           </h1>
 
           <button
@@ -188,14 +187,14 @@ export default function FormularioBasicoPage() {
             <QuestionLayout
               stepNumber={1}
               question="Qual o nome do seu negócio?"
-              microcopy="Pode ser o nome fantasia ou razão social"
+              microcopy="O nome que o cliente usa. Identifica o diagnóstico. Não avalia a empresa."
             >
               <div className="space-y-6">
                 <div>
                   <Input
                     {...register('empresaNome')}
                     type="text"
-                    placeholder="Ex: Padaria do João, Consultoria ABC..."
+                    placeholder="Ex.: Padaria do João"
                     className="h-auto border-2 border-gray-200 px-4 py-4 text-lg focus:border-royal-blue focus:ring-4 focus:ring-royal-blue/10"
                     autoFocus
                   />
@@ -220,8 +219,8 @@ export default function FormularioBasicoPage() {
           {currentStep === 2 && (
             <QuestionLayout
               stepNumber={2}
-              question="O que você vende ou oferece?"
-              microcopy="Escolha a opção que mais se parece com seu negócio"
+              question="O que o negócio vende ou entrega?"
+              microcopy="O ramo só escolhe as perguntas seguintes. Não diz se a empresa está bem."
             >
               <div className="space-y-6">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -272,8 +271,8 @@ export default function FormularioBasicoPage() {
           {currentStep === 3 && (
             <QuestionLayout
               stepNumber={3}
-              question="Há quanto tempo você está nesse negócio?"
-              microcopy="Isso me ajuda a entender sua experiência"
+              question="Há quanto tempo esta operação existe?"
+              microcopy="Tempo é contexto. Anos de casa não são, por si, uma força."
             >
               <div className="space-y-6">
                 <div className="flex max-w-[500px] flex-col gap-3">
@@ -322,8 +321,8 @@ export default function FormularioBasicoPage() {
           {currentStep === 4 && (
             <QuestionLayout
               stepNumber={4}
-              question="Quantas pessoas trabalham com você?"
-              microcopy="Incluindo você, sócios e funcionários"
+              question="Quantas pessoas fazem o trabalho, incluindo você?"
+              microcopy="Tamanho descreve capacidade disponível. Equipe pequena não é fraqueza automática."
             >
               <div className="space-y-6">
                 <div className="flex max-w-[500px] flex-col gap-3">
@@ -372,8 +371,8 @@ export default function FormularioBasicoPage() {
           {currentStep === 5 && (
             <QuestionLayout
               stepNumber={5}
-              question="Qual a faixa de receita mensal do seu negócio?"
-              microcopy="Seus dados são confidenciais e protegidos 🔒"
+              question="Qual a faixa de receita mensal?"
+              microcopy="Contexto. Receita alta não prova margem. Receita baixa não prova fraqueza. Fica neste navegador."
             >
               <div className="space-y-6">
                 <div className="flex max-w-[500px] flex-col gap-3">
@@ -412,7 +411,7 @@ export default function FormularioBasicoPage() {
                     onClick={handleSubmit(onSubmit)}
                     className="h-auto w-full animate-fade-in bg-emerald-green px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-[#059669] md:w-auto"
                   >
-                    Continuar para perguntas estratégicas →
+                    Seguir para o que o negócio faz →
                   </Button>
                 )}
               </div>

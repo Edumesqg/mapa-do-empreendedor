@@ -1,194 +1,285 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  ClipboardList,
+  Code2,
+  Linkedin,
+  MessageCircle,
+  PencilRuler,
+  Phone,
+  ShieldCheck,
+} from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
-import { Brain, FileText, Shield, Clipboard, LineChart, Sparkles, Lock, MapPin } from 'lucide-react';
+import { HomePanels } from '@/components/site/HomePanels';
+import { SiteHeader } from '@/components/site/SiteHeader';
+
+export const metadata: Metadata = {
+  title: 'Autoconsultoria | Estratégia para pequenas empresas',
+  description:
+    'Um projeto open source que aproxima conhecimento acadêmico, experiência em consultoria e inteligência artificial da realidade de pequenas empresas. Faça seu diagnóstico sem cadastro.',
+};
+
+const etapas = [
+  {
+    numero: '01',
+    titulo: 'Responda ao diagnóstico',
+    descricao:
+      'Conte como sua empresa funciona. Uma pergunta por vez, sobre o que acontece na operação. Sem cadastro.',
+    Icone: ClipboardList,
+  },
+  {
+    numero: '02',
+    titulo: 'Veja e revise sua SWOT',
+    descricao:
+      'Receba um quadro baseado nas suas respostas. Ajuste o que não representa a realidade do negócio.',
+    Icone: PencilRuler,
+  },
+  {
+    numero: '03',
+    titulo: 'Reunião de diagnóstico',
+    descricao:
+      'Com sua própria chave de API, o consultor conduz a reunião: lê o quadro, mapeia lacunas, pergunta o que falta e só depois libera conversa livre.',
+    Icone: MessageCircle,
+  },
+];
+
+const garantias = [
+  {
+    titulo: 'Sem cadastro',
+    descricao: 'O diagnóstico fica no seu navegador.',
+    Icone: CheckCircle2,
+  },
+  {
+    titulo: 'Open source',
+    descricao: 'Código e método abertos para consulta.',
+    Icone: Code2,
+  },
+  {
+    titulo: 'Sua chave, seu controle',
+    descricao: 'A chave é sua e não fica no servidor.',
+    Icone: ShieldCheck,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white text-slate-900 antialiased">
+      <SiteHeader />
       <main>
-        <section className="bg-hero-gradient px-6 py-20 md:px-8 md:py-32 lg:px-12">
-          <div className="mx-auto max-w-[1200px] animate-fade-in">
-            <div className="flex flex-col items-center text-center">
-              <h1 className="mb-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
-                DIAGNÓSTICO ESTRATÉGICO AUTOMATIZADO
+        {/* HERO */}
+        <section className="relative isolate overflow-hidden bg-[#061f3c] text-white">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-90"
+            style={{
+              background:
+                'radial-gradient(ellipse 800px 500px at 78% 14%, rgba(0, 133, 241, .18), transparent 70%), radial-gradient(ellipse 650px 450px at 5% 105%, rgba(0, 117, 215, .24), transparent 80%)',
+            }}
+          />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-0 h-[680px] w-[680px] -skew-x-12 rounded-[100px] bg-cyan-400/[0.035]" />
+
+          <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pb-14 pt-14 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-12 lg:pb-16 lg:pt-20">
+            <div className="relative z-10 max-w-2xl">
+              <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200 sm:text-sm">
+                <span className="h-5 w-[3px] rounded-full bg-sky-400" />
+                Projeto independente e open source
+              </div>
+
+              <h1 className="mt-7 text-4xl font-bold leading-[1.1] tracking-[-0.045em] sm:text-5xl lg:text-[clamp(3.3rem,4.65vw,4.8rem)]">
+                Análise estratégica para <span className="text-[#72c6ff]">pequenas empresas.</span>
               </h1>
-              <p className="mb-12 text-base text-gray-300 md:text-lg">
-                ADVISION CONSULTING
+
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200 sm:text-xl">
+                Entenda melhor o seu negócio com um diagnóstico simples, uma SWOT baseada no que você conta e uma reunião guiada com IA para explorar o que ainda falta.
               </p>
 
-              <h2 className="mb-6 max-w-[800px] text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl lg:text-5xl lg:leading-tight">
-                Consultoria de multinacional, agora acessível ao seu negócio
-              </h2>
-
-              <p className="mb-10 max-w-[700px] text-lg leading-relaxed text-gray-100 md:text-xl md:leading-relaxed">
-                Obtenha SWOT, pesquisa de mercado e um plano de ação completo em minutos.
-              </p>
-
-              <Link href="/cadastro">
-                <Button
-                  size="lg"
-                  className="h-auto bg-emerald-green px-12 py-5 text-lg font-semibold text-white shadow-lg shadow-emerald-green/40 transition-all duration-200 hover:translate-y-[-2px] hover:bg-emerald-green hover:shadow-xl hover:shadow-emerald-green/50 active:scale-[0.98] md:text-xl"
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/diagnostico"
+                  className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-xl bg-[#078cf4] px-6 py-3.5 text-base font-semibold text-white shadow-[0_12px_30px_rgba(0,106,210,0.28)] transition hover:-translate-y-0.5 hover:bg-[#027fe4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300"
                 >
-                  Testar Diagnóstico
-                </Button>
-              </Link>
+                  Começar o diagnóstico <ArrowRight aria-hidden="true" className="h-5 w-5" />
+                </Link>
+                <Link
+                  href="/fundamento"
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-xl border border-white/45 bg-white/[0.04] px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/[0.12] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                >
+                  Ler o fundamento
+                </Link>
+              </div>
 
-              <p className="mt-6 text-sm text-gray-400 md:text-base">
-                Baseado em metodologias McKinsey, BCG e Harvard Business School
+              <p className="mt-5 max-w-lg text-sm leading-6 text-slate-300">
+                O diagnóstico não exige conhecimento de administração. Basta contar o que já acontece na sua empresa.
               </p>
             </div>
+
+            <div className="relative mx-auto w-full max-w-[540px] lg:max-w-none">
+              <div className="absolute -inset-4 rounded-[42px] bg-gradient-to-tr from-sky-500/20 via-transparent to-white/5 blur-2xl" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-[28px] border border-white/15 bg-[#153958] shadow-[0_34px_90px_rgba(0,8,25,0.45)]">
+                <Image
+                  src="/autoconsultoria/hero-empreendedor.webp"
+                  alt="Empreendedor atendendo clientes em seu pequeno comércio"
+                  width={880}
+                  height={680}
+                  priority
+                  className="aspect-[1.19] w-full object-cover object-[center_28%]"
+                />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#061f3c]/25 via-transparent to-transparent" />
+              </div>
+              <div className="absolute -bottom-5 -left-3 hidden items-center gap-3 rounded-2xl border border-white/15 bg-[#082947]/95 px-5 py-3 shadow-xl backdrop-blur sm:flex">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/20 text-sky-300"><BookOpen className="h-5 w-5" /></span>
+                <span className="text-sm font-medium text-slate-100">Conhecimento aplicado à vida real</span>
+              </div>
+            </div>
           </div>
-        </section>
 
-        <section className="bg-white px-6 py-20 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-[1200px]">
-            <h2 className="mb-14 text-center text-3xl font-semibold text-navy-blue md:text-4xl">
-              Por que escolher o Diagnóstico Estratégico Automatizado?
-            </h2>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <Card className="group border-gray-200 bg-card-gradient shadow-md transition-all duration-300 hover:translate-y-[-4px] hover:border-royal-blue hover:shadow-xl">
-                <CardHeader className="space-y-4">
-                  <div className="flex justify-center">
-                    <Brain className="h-16 w-16 text-emerald-green" />
+          <div className="relative border-t border-white/10 bg-[#051b34]/65">
+            <div className="mx-auto grid max-w-7xl gap-6 px-5 py-6 sm:grid-cols-3 sm:gap-4 sm:px-8">
+              {garantias.map(({ titulo, descricao, Icone }, index) => (
+                <div
+                  key={titulo}
+                  className={`flex items-start gap-3 sm:py-1 ${index > 0 ? 'sm:border-l sm:border-white/15 sm:pl-6 lg:pl-10' : ''}`}
+                >
+                  <Icone aria-hidden="true" className="mt-0.5 h-7 w-7 shrink-0 text-sky-300" strokeWidth={1.65} />
+                  <div>
+                    <p className="font-semibold text-white">{titulo}</p>
+                    <p className="mt-1 text-sm leading-5 text-slate-300">{descricao}</p>
                   </div>
-                  <CardTitle className="text-center text-2xl text-carbon">
-                    Metodologias reconhecidas
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base leading-relaxed text-gray-600">
-                    Harvard, McKinsey, BCG — frameworks validados globalmente, adaptados para pequenas empresas.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="group border-gray-200 bg-card-gradient shadow-md transition-all duration-300 hover:translate-y-[-4px] hover:border-royal-blue hover:shadow-xl">
-                <CardHeader className="space-y-4">
-                  <div className="flex justify-center">
-                    <FileText className="h-16 w-16 text-royal-blue" />
-                  </div>
-                  <CardTitle className="text-center text-2xl text-carbon">
-                    Relatórios profissionais em PDF
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base leading-relaxed text-gray-600">
-                    Análises executivas prontas para apresentar a sócios, investidores e parceiros.
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="group border-gray-200 bg-card-gradient shadow-md transition-all duration-300 hover:translate-y-[-4px] hover:border-royal-blue hover:shadow-xl">
-                <CardHeader className="space-y-4">
-                  <div className="flex justify-center">
-                    <Shield className="h-16 w-16 text-sky-blue" />
-                  </div>
-                  <CardTitle className="text-center text-2xl text-carbon">
-                    LGPD e criptografia
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base leading-relaxed text-gray-600">
-                    Seus dados protegidos com criptografia de nível bancário. Privacidade garantida.
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-slate-gray px-6 py-20 md:px-8 lg:px-12">
-          <div className="mx-auto max-w-[1200px]">
-            <h2 className="mb-14 text-center text-3xl font-semibold text-navy-blue md:text-4xl">
-              Como funciona?
-            </h2>
-
-            <div className="mx-auto max-w-[800px] space-y-10">
-              <div className="flex flex-col items-center space-y-4 md:flex-row md:space-x-6 md:space-y-0">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-royal-blue text-2xl font-bold text-white">
-                  1
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <div className="mb-3 flex items-center justify-center space-x-3 md:justify-start">
-                    <Clipboard className="h-12 w-12 text-sky-blue" />
-                    <h3 className="text-xl font-semibold text-carbon md:text-2xl">
-                      Responda perguntas sobre seu negócio
-                    </h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-gray-600">
-                    Questionário inteligente de 10 minutos. Quanto mais detalhes, melhor a análise.
-                  </p>
-                </div>
+        {/* HISTÓRIA DO PROJETO */}
+        <section className="px-5 py-20 sm:px-8 lg:py-24" aria-labelledby="historia-titulo">
+          <div className="mx-auto grid max-w-7xl items-center gap-11 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0876cf]">Por trás do projeto</p>
+              <h2 id="historia-titulo" className="mt-3 max-w-2xl text-3xl font-bold tracking-[-0.035em] text-[#07294a] sm:text-4xl">
+                Por que criei a <span className="text-[#087de0]">Autoconsultoria?</span>
+              </h2>
+              <div className="mt-6 max-w-[620px] space-y-4 text-base leading-8 text-slate-600 sm:text-lg">
+                <p>
+                  Trabalhando com consultoria empresarial, participei de projetos de diagnóstico, análise de negócios e melhoria de processos em empresas de diferentes setores.
+                </p>
+                <p>
+                  Nesse caminho, percebi que muito do conhecimento usado em grandes projetos também poderia ser útil para quem toca uma padaria, uma oficina, uma loja ou um pequeno negócio no campo.
+                </p>
+                <p>
+                  Criei a Autoconsultoria para aproximar esses conhecimentos da rotina de quem empreende, reunindo fundamentos acadêmicos, experiência prática e inteligência artificial em um projeto aberto.
+                </p>
               </div>
-
-              <div className="flex flex-col items-center space-y-4 md:flex-row md:space-x-6 md:space-y-0">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-royal-blue text-2xl font-bold text-white">
-                  2
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <div className="mb-3 flex items-center justify-center space-x-3 md:justify-start">
-                    <LineChart className="h-12 w-12 text-emerald-green" />
-                    <h3 className="text-xl font-semibold text-carbon md:text-2xl">
-                      Receba análise SWOT inicial gratuita
-                    </h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-gray-600">
-                    Resultado imediato mostrando suas forças, fraquezas, oportunidades e ameaças — 100% gratuito, sem custos ocultos e com análise instantânea.
-                  </p>
-                </div>
+              <div className="mt-7 border-l-[3px] border-[#078cf4] pl-5 text-lg font-semibold leading-8 text-[#0a3356]">
+                A proposta não é a IA decidir por você. É ajudar a olhar para o seu negócio com mais clareza.
               </div>
+            </div>
 
-              <div className="flex flex-col items-center space-y-4 md:flex-row md:space-x-6 md:space-y-0">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-royal-blue text-2xl font-bold text-white">
-                  3
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <div className="mb-3 flex items-center justify-center space-x-3 md:justify-start">
-                    <Sparkles className="h-12 w-12 text-amber-orange" />
-                    <h3 className="text-xl font-semibold text-carbon md:text-2xl">
-                      Diagnóstico completo com metodologia validada
-                    </h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-gray-600">
-                    Amplie sua visão estratégica com pesquisa de mercado externa, matriz TOWS para definir ações prioritárias, OKRs mensuráveis e um roadmap de execução prático. Nossa abordagem combina frameworks consagrados de Harvard Business School, McKinsey e BCG, adaptados para pequenas empresas.
-                  </p>
-                </div>
+            <div className="relative overflow-hidden rounded-[28px] border border-slate-200/70 bg-[#e9f4fb] shadow-[0_20px_70px_rgba(19,63,103,0.1)]">
+              <Image
+                src="/autoconsultoria/livros-estrategia.webp"
+                alt="Imagem ilustrativa de livros sobre estratégia e gestão de negócios"
+                width={778}
+                height={440}
+                className="w-full object-cover"
+              />
+              <div className="absolute inset-x-5 bottom-5 rounded-xl border border-white/70 bg-white/90 px-5 py-3 text-sm font-medium text-[#123c60] shadow-sm backdrop-blur-sm sm:inset-x-8">
+                Da teoria de gestão às perguntas do dia a dia.
               </div>
             </div>
           </div>
         </section>
 
-        <section className="bg-white px-6 py-16 md:px-8 md:py-20 lg:px-12">
-          <div className="mx-auto max-w-[1200px]">
-            <div className="flex flex-col items-center justify-center space-y-8 md:flex-row md:space-x-12 md:space-y-0 lg:space-x-16">
-              <div className="flex items-center space-x-3">
-                <Lock className="h-8 w-8 text-emerald-green" />
-                <span className="text-base font-medium text-gray-600">
-                  LGPD Compliant
-                </span>
-              </div>
+        {/* COMO FUNCIONA */}
+        <section id="como-usar" className="scroll-mt-24 bg-[#f5f9fd] px-5 py-20 sm:px-8 lg:py-24" aria-labelledby="como-titulo">
+          <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0876cf]">Simples de começar</p>
+              <h2 id="como-titulo" className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#07294a] sm:text-4xl">Como funciona?</h2>
+              <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">
+                Você descreve sua empresa, revisa o que a análise mostra e abre uma reunião guiada com o consultor.
+              </p>
+            </div>
 
-              <div className="flex items-center space-x-3">
-                <Shield className="h-8 w-8 text-emerald-green" />
-                <span className="text-base font-medium text-gray-600">
-                  Dados Criptografados
-                </span>
-              </div>
+            <div className="mt-11 grid gap-5 md:grid-cols-3">
+              {etapas.map(({ numero, titulo, descricao, Icone }) => (
+                <article key={numero} className="group relative rounded-[24px] border border-[#dbe8f3] bg-white p-7 shadow-[0_12px_32px_rgba(11,55,95,0.035)] transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-[0_22px_40px_rgba(11,55,95,0.09)]">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e9f5ff] text-[#078cf4]">
+                      <Icone className="h-7 w-7" aria-hidden="true" strokeWidth={1.8} />
+                    </span>
+                    <span className="text-sm font-bold tracking-[0.13em] text-slate-300">{numero}</span>
+                  </div>
+                  <h3 className="mt-8 text-xl font-bold tracking-tight text-[#082b4b]">{titulo}</h3>
+                  <p className="mt-3 text-base leading-7 text-slate-600">{descricao}</p>
+                </article>
+              ))}
+            </div>
 
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-8 w-8 text-emerald-green" />
-                <span className="text-base font-medium text-gray-600">
-                  Plataforma Brasileira
-                </span>
+            <p className="mx-auto mt-7 max-w-3xl text-center text-sm leading-6 text-slate-500">
+              O que não estiver sustentado pelas respostas não precisa entrar na SWOT. Um quadrante pode ficar vazio; o quadro pode ser editado por você.
+            </p>
+          </div>
+        </section>
+
+        <HomePanels />
+
+        {/* AUTOR */}
+        <section className="px-5 py-20 sm:px-8 lg:py-24" aria-labelledby="autor-titulo">
+          <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[260px_1fr] lg:gap-14">
+            <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-[32px] border border-[#0c5e9b]/20 bg-[#0c5e9b]/5 shadow-[0_24px_60px_rgba(2,54,99,.22)] lg:h-64 lg:w-64">
+              <Image
+                src="/autoconsultoria/eduardo-mesquita.webp"
+                alt="Foto de Eduardo Mesquita Gomes, criador do projeto"
+                width={512}
+                height={512}
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#0876cf]">Quem criou o projeto</p>
+              <h2 id="autor-titulo" className="mt-3 text-3xl font-bold tracking-[-0.035em] text-[#07294a] sm:text-4xl">Eduardo Mesquita Gomes</h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+                Profissional de dados, inteligência artificial e estratégia de negócios, com experiência em consultoria e projetos de transformação empresarial.
+              </p>
+              <ul className="mt-6 grid gap-3 text-sm leading-6 text-slate-700 sm:text-base">
+                <li className="flex items-start gap-3"><BookOpen aria-hidden="true" className="mt-1 h-[18px] w-[18px] shrink-0 text-[#087de0]" />Mestrando em Administração — ESALQ/USP</li>
+                <li className="flex items-start gap-3"><BookOpen aria-hidden="true" className="mt-1 h-[18px] w-[18px] shrink-0 text-[#087de0]" />Executive MBA em Data Science &amp; Analytics — ESALQ/USP</li>
+                <li className="flex items-start gap-3"><BookOpen aria-hidden="true" className="mt-1 h-[18px] w-[18px] shrink-0 text-[#087de0]" />Engenheiro de Agronegócios — UFF</li>
+              </ul>
+              <div className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-4 text-sm font-semibold sm:text-base">
+                <a href="https://www.linkedin.com/in/engeduardomesquita/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#0877d4] transition hover:text-[#055a9d] hover:underline">
+                  <Linkedin aria-hidden="true" className="h-5 w-5" /> LinkedIn
+                </a>
+                <a href="tel:+5521983199660" className="inline-flex items-center gap-2 text-[#0877d4] transition hover:text-[#055a9d] hover:underline">
+                  <Phone aria-hidden="true" className="h-5 w-5" /> (21) 98319-9660
+                </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* CONVITE FINAL */}
+        <section className="relative isolate overflow-hidden bg-[#062b53] px-5 py-16 text-white sm:px-8 lg:py-20" aria-labelledby="cta-titulo">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-20 h-96 w-96 rounded-full border-[80px] border-[#0c75bc]/20" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-56 left-[-7%] h-[420px] w-[420px] rounded-full bg-[#0d90e8]/10 blur-3xl" />
+          <div className="relative mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-300">Conheça sua empresa com outros olhos</p>
+            <h2 id="cta-titulo" className="mt-4 text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Comece pelo que seu negócio já faz.</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-200 sm:text-lg">
+              Um projeto aberto para ajudar quem empreende a organizar informações, reconhecer limites e fazer perguntas melhores sobre o futuro do negócio.
+            </p>
+            <Link href="/diagnostico" className="mt-8 inline-flex min-h-[52px] items-center justify-center gap-3 rounded-xl bg-[#078cf4] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#027fe4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              Começar o diagnóstico <ArrowRight aria-hidden="true" className="h-5 w-5" />
+            </Link>
+            <p className="mt-5 text-sm text-slate-300">Sem cadastro. A reunião com o consultor requer sua própria chave de API.</p>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

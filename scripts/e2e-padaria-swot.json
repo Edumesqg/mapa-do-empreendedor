@@ -1,0 +1,42 @@
+{
+  "answers": {
+    "empresaNome": "Padaria do Bairro",
+    "setor": "alimentos",
+    "experiencia": "3-5",
+    "equipe": "2-5",
+    "receita": "10-50k",
+    "situacaoFinanceira": "apertado",
+    "objetivoPrincipal": "aumentar-vendas",
+    "maiorDesafio": "tempo",
+    "nivelDigitalizacao": "whatsapp",
+    "concorrenciaPercebida": "media",
+    "diferencial": "Pao fresquinho de manha e atendimento pelo nome",
+    "quemCompra": "Vizinhos que passam a caminho do trabalho",
+    "oQueRepete": "Assar pao frances todo dia as 5h",
+    "pressaoExterna": ""
+  },
+  "swot": {
+    "forcas": [
+      {
+        "texto": "Condição declarada pelo dono: Pao fresquinho de manha e atendimento pelo nome. O efeito no cliente ainda precisa ser confirmado."
+      },
+      {
+        "texto": "Capacidade que a operação declara repetir: Assar pao frances todo dia as 5h."
+      }
+    ],
+    "fraquezas": [
+      {
+        "texto": "Limite declarado: falta de tempo. Falta onde esse tempo é consumido na operação."
+      }
+    ],
+    "oportunidades": [],
+    "ameacas": [],
+    "lacunas": [
+      "Quem compra foi descrito assim: “Vizinhos que passam a caminho do trabalho”. Isso ainda não é oportunidade. Falta a condição externa, o público e o benefício.",
+      "Nenhuma pressão externa foi descrita. Ameaça sem fato não entra no quadro.",
+      "A intenção deste ciclo é aumentar vendas. Intenção não entra como oportunidade. Se a conversa for de crescimento, separar penetração, produto novo, mercado novo e diversificação.",
+      "Tempo de mercado, tamanho da equipe e faturamento são contexto. Eles não viram força nem fraqueza sem um efeito observável.",
+      "Nenhuma oportunidade externa foi sustentada. Desejo, ação pretendida e canal ainda não usado ficam de fora até haver condição, público e benefício."
+    ]
+  }
+}

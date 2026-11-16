@@ -200,9 +200,9 @@ export default function SwotInicialPage() {
 
           <div className="mx-auto mb-10 grid max-w-[900px] grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              'Validação SWOT com IA (Luna)',
-              'Pesquisa de mercado (Jack)',
-              'Plano estratégico completo (Nina)',
+              'Reunião de diagnóstico com o consultor',
+              'SWOT editável com aceite humano',
+              'Conversa livre após o encerramento',
               'Matriz TOWS personalizada',
               'OKRs e metas claras',
               '3 relatórios em PDF',

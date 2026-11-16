@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Diagnóstico Estratégico Automatizado',
-  description: 'Plataforma de diagnóstico empresarial',
+  title: 'Autoconsultoria',
+  description: 'Análise estratégica baseada em conhecimento acadêmico, experiência em consultoria e inteligência artificial.',
 };
 
 export default function RootLayout({
